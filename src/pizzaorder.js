@@ -23,7 +23,7 @@ export default function PizzaOrder ({ pizzas, reset }) {
 
                             {pizza.extra ? <StyledDetailDiv><b>Topping:</b> Extra Cheeze!</StyledDetailDiv> : null}
 
-                            {pizza.instructions ? <StyledDetailDiv><b>Special Instructions:</b> {pizza.instructions}</StyledDetailDiv> : 'No special instructions :('}
+                            {pizza.instructions ? <StyledDetailDiv><b>Special Instructions:</b> {pizza.instructions}</StyledDetailDiv> : <StyledDetailDiv>No special instructions :(</StyledDetailDiv>}
 
                             <br />
                             <button onClick={reset}>Go Back Home</button>
@@ -31,7 +31,7 @@ export default function PizzaOrder ({ pizzas, reset }) {
                     );
                 })
             }
-            <div><img src='https://i.pinimg.com/originals/12/49/f0/1249f00662b90f22cae4c236dbef1996.jpg' /></div>
+            <div><img src='https://i.pinimg.com/originals/12/49/f0/1249f00662b90f22cae4c236dbef1996.jpg' alt='best boi' /></div>
         </StyledOrderContainer>
     );
 };
@@ -49,7 +49,7 @@ const StyledOrderDetails = styled.div`
     padding: 8.3%;
 
     button {
-        margin-top: 2%;
+        margin-top: 6%;
         cursor: pointer;
     }
 `;

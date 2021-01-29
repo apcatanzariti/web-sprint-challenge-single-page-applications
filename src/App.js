@@ -102,7 +102,7 @@ const App = () => {
           <Pizza values={formValues} change={inputChange} disabled={disabled} submit={formSubmit} errors={formErrors}/>
         </Route>
         <Route path='/'>
-          <img src='https://i.pinimg.com/736x/76/af/b2/76afb213e0fb7ec5c3833f0a1291834a.jpg'/>
+          <img src='https://i.pinimg.com/736x/76/af/b2/76afb213e0fb7ec5c3833f0a1291834a.jpg' alt='good boi'/>
           <Homepage />
         </Route>
       </Switch>

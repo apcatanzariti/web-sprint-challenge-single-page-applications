@@ -107,20 +107,16 @@ export default function Pizza ({ values, change, disabled, submit, errors }) {
                 </input>
             </StyledInput>
 
-            <button disabled={disabled}>Send My Pizza!</button>
+            <StyledPizzaButton disabled={disabled}>Send My Pizza!</StyledPizzaButton>
         </form>
         </StyledPizzaContainer>
     );
 };
 
+//--------------------------------BEGIN STYLING----------------------------------
+
 const StyledPizzaContainer = styled.div`
     // border: solid 1px green;
-
-    button {
-        margin-top: 3%;
-        padding: 1% 4% 1% 4%;
-        cursor: pointer;
-    }
 
     .link {
         color: blue;
@@ -150,4 +146,11 @@ const StyledInput = styled.div`
 const StyledErrorDiv = styled.div`
     padding: .5%;
     color: red;
+`;
+
+const StyledPizzaButton = styled.button`
+    margin-top: 3%;
+        padding: 1% 4% 1% 4%;
+
+        ${props => (props.disabled === true ? `cursor: default;` : `cursor: pointer;`)}
 `;
