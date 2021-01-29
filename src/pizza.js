@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
-export default function Pizza ({ values, change, submit, disabled }) {
+export default function Pizza ({ values, change, disabled, submit, errors }) {
 
     const onChange = (evt) => {
         const { name, value, type, checked } = evt.target;
@@ -15,12 +16,13 @@ export default function Pizza ({ values, change, submit, disabled }) {
     };
 
     return (
-        <div>
+        <StyledPizzaContainer>
         <Link to='/'>
-            <div>go back home</div>
+            <div className='link'>Go Back Home</div>
         </Link>
         <form onSubmit={onSubmit}>
-            <div>
+            <StyledInput>
+                <p>Enter Name:</p>
                 <input
                 type='text'
                 name='name'
@@ -28,21 +30,25 @@ export default function Pizza ({ values, change, submit, disabled }) {
                 placeholder='Name'
                 onChange={onChange}>
                 </input>
-            </div>
+                <StyledErrorDiv>{errors.name}</StyledErrorDiv>
+            </StyledInput>
 
-            <div>
-            <select
-            name='size'
-            value={values.size}
-            onChange={onChange}>
-                <option>Choose a Size</option>
-                <option>Small</option>
-                <option>Medium</option>
-                <option>Large</option>
-            </select>
-            </div>
+            <StyledInput>
+                <p>Pizza Size:</p>
+                <select
+                name='size'
+                value={values.size}
+                onChange={onChange}>
+                    <option>Choose a Size</option>
+                    <option>Small</option>
+                    <option>Medium</option>
+                    <option>Large</option>
+                </select>
+                <StyledErrorDiv>{errors.size}</StyledErrorDiv>
+            </StyledInput>
 
-            <div>
+            <StyledInput>
+                <p>Choose Some Toppings:</p>
                 <label>
                 <input
                 type='checkbox'
@@ -52,9 +58,9 @@ export default function Pizza ({ values, change, submit, disabled }) {
                 </input>
                 Pepperoni
                 </label>
-            </div>
+            </StyledInput>
 
-            <div>
+            <StyledInput>
                 <label>
                 <input
                 type='checkbox'
@@ -64,9 +70,9 @@ export default function Pizza ({ values, change, submit, disabled }) {
                 </input>
                 Olives
                 </label>
-            </div>
+            </StyledInput>
 
-            <div>
+            <StyledInput>
                 <label>
                 <input
                 type='checkbox'
@@ -76,9 +82,9 @@ export default function Pizza ({ values, change, submit, disabled }) {
                 </input>
                 Bacon
                 </label>
-            </div>
+            </StyledInput>
 
-            <div>
+            <StyledInput>
                 <label>
                 <input
                 type='checkbox'
@@ -88,9 +94,10 @@ export default function Pizza ({ values, change, submit, disabled }) {
                 </input>
                 Extra Cheeze
                 </label>
-            </div>
+            </StyledInput>
 
-            <div>
+            <StyledInput>
+                <p>Any Special Instructions?:</p>
                 <input
                 type='text'
                 name='instructions'
@@ -98,10 +105,49 @@ export default function Pizza ({ values, change, submit, disabled }) {
                 placeholder='Special Instructions'
                 onChange={onChange}>
                 </input>
-            </div>
+            </StyledInput>
 
-            <button disabled={disabled} >Send My Pizza!</button>
+            <button disabled={disabled}>Send My Pizza!</button>
         </form>
-        </div>
+        </StyledPizzaContainer>
     );
 };
+
+const StyledPizzaContainer = styled.div`
+    // border: solid 1px green;
+
+    button {
+        margin-top: 3%;
+        padding: 1% 4% 1% 4%;
+        cursor: pointer;
+    }
+
+    .link {
+        color: blue;
+        text-decoration: none;
+    }
+`;
+
+const StyledInput = styled.div`
+    // border: solid 1px black;
+    margin-top: 2%;
+
+    p {
+        background-color: #e4e4e4;
+        font-weight: bold;
+        padding: .5%;
+    }
+
+    input {
+        padding: .5%;
+    }
+
+    select {
+        padding: .5%;
+    }
+`;
+
+const StyledErrorDiv = styled.div`
+    padding: .5%;
+    color: red;
+`;
